@@ -1,6 +1,7 @@
 // Exercise 1
 
 import scala.collection.*
+import scala.collection.mutable.ListBuffer
 import scala.language.postfixOps
 
 def createMapOfIndices(myString: String): mutable.Map[Char, mutable.LinkedHashSet[Int]] = {
@@ -25,3 +26,12 @@ def immMapOfIndices(myString: String): immutable.Map[Char, List[Int]] = {
 }
 val immIndicesMap = immMapOfIndices("Mississippi")
 println(immIndicesMap)
+
+// Exercise 3
+
+def printFromEnd(myListBuffer: ListBuffer[Int]): Unit = {
+  myListBuffer.zipWithIndex.reverse.foreach(
+    (c, i) => if i % 2 == 0 then println(c))
+}
+val listBuf = ListBuffer(0, 1, 2, 3, 4, 5)
+printFromEnd(listBuf)

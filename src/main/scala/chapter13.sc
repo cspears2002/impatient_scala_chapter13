@@ -19,7 +19,8 @@ println(indicesMap)
 // Exercise 2
 
 def immMapOfIndices(myString: String): immutable.Map[Char, List[Int]] = {
-  myString.foldLeft(immutable.Map[Char, List[Int]]())((m, c) => m.updated(c, List(myString.indexOf(c))))
+  myString.foldLeft(immutable.Map[Char, List[Int]]())((m, c) =>
+    m.updated(c, m.getOrElse(c, List(myString.indexOf(c)))))
 }
 val immIndicesMap = immMapOfIndices("Mississippi")
 println(immIndicesMap)

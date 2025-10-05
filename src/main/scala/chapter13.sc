@@ -18,9 +18,10 @@ println(indicesMap)
 
 // Exercise 2
 
+// The c variable is actually a tuple.
 def immMapOfIndices(myString: String): immutable.Map[Char, List[Int]] = {
-  myString.foldLeft(immutable.Map[Char, List[Int]]())((m, c) =>
-    m.updated(c, m.getOrElse(c, List.empty[Int]) :+ myString.indexOf(c)))
+  myString.zipWithIndex.foldLeft(immutable.Map[Char, List[Int]]())((m, c) =>
+    m.updated(c(0), m.getOrElse(c(0), List.empty[Int]) :+ c(1)))
 }
 val immIndicesMap = immMapOfIndices("Mississippi")
 println(immIndicesMap)

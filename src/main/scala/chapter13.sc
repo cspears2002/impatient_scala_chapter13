@@ -60,3 +60,11 @@ def profile[R](code: => R, description: String = "Function"): (R, Long) = {
 val listBuf2 = ListBuffer(0, 1, 2, 3, 4, 5)
 val (result1, time1) = profile(removeEven(listBuf2), "Remove items")
 val (result2, time2) = profile(removeEven(listBuf2), "Copy to list")
+
+// Exercise 4
+def getNameInts(names: Array[String], nameToInt: Map[String, Int]): Array[Int] = {
+  names.flatMap(name => nameToInt.get(name))
+}
+val names = Array("Tom", "Fred", "Harry")
+val nameToInt = Map("Tom" -> 3, "Dick" -> 4, "Harry" -> 5)
+val arrayInts = getNameInts(names, nameToInt)

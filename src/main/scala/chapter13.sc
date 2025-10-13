@@ -29,9 +29,19 @@ println(immIndicesMap)
 
 // Exercise 3
 
-def printFromEnd(myListBuffer: ListBuffer[Int]): Unit = {
+def removeEven(myListBuffer: ListBuffer[Int]): ListBuffer[Int] = {
   myListBuffer.zipWithIndex.reverse.foreach(
-    (c, i) => if i % 2 == 0 then println(c))
+    (c, i) => if i % 2 == 0 then myListBuffer.remove(i))
+  myListBuffer
 }
 val listBuf = ListBuffer(0, 1, 2, 3, 4, 5)
-printFromEnd(listBuf)
+removeEven(listBuf)
+def copyEvenToList(myListBuffer: ListBuffer[Int]): ListBuffer[Int] = {
+  val newListBuffer = ListBuffer[Int]()
+  myListBuffer.zipWithIndex.reverse.foreach(
+    (c, i) => if i % 2 == 0 then newListBuffer.append(c)
+  )
+  newListBuffer
+}
+val listBuf1 = ListBuffer(0, 1, 2, 3, 4, 5)
+removeEven(listBuf1)

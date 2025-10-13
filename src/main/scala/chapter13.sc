@@ -68,3 +68,12 @@ def getNameInts(names: Array[String], nameToInt: Map[String, Int]): Array[Int] =
 val names = Array("Tom", "Fred", "Harry")
 val nameToInt = Map("Tom" -> 3, "Dick" -> 4, "Harry" -> 5)
 val arrayInts = getNameInts(names, nameToInt)
+
+// Exercise 5
+val a = Array(1, 2, 7, 9)
+a.mkString("<", ",", ">")
+def makeAStr(myArray: Array[Int], front: String, sep: String, end: String): String = {
+  val strArray = myArray.map(_.toString)
+  front + strArray.reduceLeft(_ + sep + _) + end
+}
+makeAStr(a, "<", ",", ">")

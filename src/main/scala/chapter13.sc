@@ -80,5 +80,5 @@ makeAStr(a, "<", ",", ">")
 
 // Exercise 6
 val lst = List(1, 2, 3, 4, 5)
-lst.foldRight(List[Int]())(_ :: _)
+lst.foldRight(List[Int]())(_ :: _).reverse
 lst.foldLeft(List[Int]())(_ :+ _)

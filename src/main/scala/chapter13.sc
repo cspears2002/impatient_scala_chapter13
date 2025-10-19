@@ -77,3 +77,8 @@ def makeAStr(myArray: Array[Int], front: String, sep: String, end: String): Stri
   front + strArray.reduceLeft(_ + sep + _) + end
 }
 makeAStr(a, "<", ",", ">")
+
+// Exercise 6
+val lst = List(1, 2, 3, 4, 5)
+lst.foldRight(List[Int]())(_ :: _)
+lst.foldLeft(List[Int]())(_ :+ _)

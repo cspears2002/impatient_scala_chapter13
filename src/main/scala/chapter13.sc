@@ -82,3 +82,15 @@ makeAStr(a, "<", ",", ">")
 val lst = List(1, 2, 3, 4, 5)
 lst.foldRight(List[Int]())(_ :: _).reverse
 lst.foldLeft(List[Int]())(_ :+ _)
+
+// Exercise 7
+val prices = List(5.0, 20.0, 9.95)
+val quantities = List(10, 2, 1)
+prices.zip(quantities).map(_ * _)
+def multDoubleInt(x: Double, y: Int): Double = {
+  x * y
+}
+prices.zip(quantities).map(multDoubleInt)
+val f: (Double, Int) => Double = (x, y) => x * y
+val fTupled: ((Double, Int)) => Double = f.tupled
+prices.zip(quantities).map[Double](fTupled)

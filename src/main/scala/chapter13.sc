@@ -94,3 +94,9 @@ prices.zip(quantities).map(multDoubleInt)
 val f: (Double, Int) => Double = (x, y) => x * y
 val fTupled: ((Double, Int)) => Double = f.tupled
 prices.zip(quantities).map[Double](fTupled)
+
+// Exercise 8
+val myArray = Array(1, 2, 3, 4, 5, 6)
+def make2dArray(arrayInt: Array[Int], cols: Int): Array[Array[Int]] = {
+  Array(Array(1, 2, 3), Array(4, 5, 6))
+}

@@ -98,5 +98,10 @@ prices.zip(quantities).map[Double](fTupled)
 // Exercise 8
 val myArray = Array(1, 2, 3, 4, 5, 6)
 def make2dArray(arrayInt: Array[Int], cols: Int): Array[Array[Int]] = {
-  Array(Array(1, 2, 3), Array(4, 5, 6))
+  val iter = arrayInt.grouped(cols)
+  var myArray = Array[Array[Int]]()
+  while iter.hasNext do
+    myArray = myArray :+ iter.next()
+  myArray
 }
+make2dArray(myArray, 3)

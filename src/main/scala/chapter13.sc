@@ -105,3 +105,13 @@ def make2dArray(arrayInt: Array[Int], cols: Int): Array[Array[Int]] = {
   myArray
 }
 make2dArray(myArray, 3)
+
+// Exercise 9
+(1 to 10).flatMap(i => (1 to i).map(j => i * j))
+
+// Exercise 10
+val myList: List[Option[Int]] = List(Some(1), None, Some(2), Some(3))
+def addOptions(myList: List[Option[Int]]): Int = {
+  myList.flatten.sum
+}
+addOptions(myList)

@@ -1,11 +1,10 @@
-// Exercise 1
-
 import scala.collection.*
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.language.postfixOps
-
 import java.lang.System
+import java.util.TimeZone.getAvailableIDs
 
+// Exercise 1
 def createMapOfIndices(myString: String): mutable.Map[Char, mutable.LinkedHashSet[Int]] = {
   val mapOfIndices = mutable.Map[Char, mutable.LinkedHashSet[Int]]()
   for (c, idx) <- myString.zipWithIndex
@@ -20,7 +19,6 @@ val indicesMap = createMapOfIndices("Mississippi")
 println(indicesMap)
 
 // Exercise 2
-
 // The c variable is actually a tuple.
 def immMapOfIndices(myString: String): immutable.Map[Char, List[Int]] = {
   myString.zipWithIndex.foldLeft(immutable.Map[Char, List[Int]]())((m, c) =>
@@ -30,7 +28,6 @@ val immIndicesMap = immMapOfIndices("Mississippi")
 println(immIndicesMap)
 
 // Exercise 3
-
 def removeEven(myListBuffer: ListBuffer[Int]): ListBuffer[Int] = {
   myListBuffer.zipWithIndex.reverse.foreach(
     (c, i) => if i % 2 == 0 then myListBuffer.remove(i))
@@ -115,3 +112,17 @@ def addOptions(myList: List[Option[Int]]): Int = {
   myList.flatten.sum
 }
 addOptions(myList)
+
+// Exercise 11
+def lengthToArray(myMap: Map[String, Array[String]]): mutable.SortedMap[Int, Array[String]] = {
+  myMap.foldLeft(mutable.SortedMap[Int, Array[String]]()) {
+    (newMap, entry) => newMap += (entry(1).length -> entry(1))
+  }
+}
+val conToTZ = getAvailableIDs.groupBy(tz => tz.split("/")(0))
+conToTZ.foreach {
+  case (key, value) => println(s"$key: ${value.mkString("Array(", ", ", ")")}")
+}
+lengthToArray(conToTZ).foreach {
+  case (key, value) => println(s"$key: ${value.mkString("Array(", ", ", ")")}")
+}

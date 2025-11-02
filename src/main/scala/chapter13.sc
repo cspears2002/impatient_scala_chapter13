@@ -1,6 +1,8 @@
 import scala.collection.*
 import scala.collection.mutable.{ArrayBuffer, ListBuffer}
 import scala.language.postfixOps
+import scala.util.Random
+
 import java.lang.System
 import java.util.TimeZone.getAvailableIDs
 
@@ -126,3 +128,8 @@ conToTZ.foreach {
 lengthToArray(conToTZ).foreach {
   case (key, value) => println(s"$key: ${value.mkString("Array(", ", ", ")")}")
 }
+
+
+// Exercise 12
+val randomNumbers: LazyList[Int] = LazyList.continually(Random.nextInt(5))
+randomNumbers.take(5).foreach(println)

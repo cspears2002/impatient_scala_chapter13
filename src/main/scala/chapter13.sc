@@ -133,3 +133,16 @@ lengthToArray(conToTZ).foreach {
 // Exercise 12
 val randomNumbers: LazyList[Int] = LazyList.continually(Random.nextInt(5))
 randomNumbers.take(5).foreach(println)
+
+
+//Exercise 13
+val myCos: LazyList[Double] = LazyList.iterate(1.0)(scala.math.cos)
+def findConsecutiveIdentical(seq: LazyList[Double]): Option[(Double, Double)] = {
+  seq
+    .sliding(2)
+    .collectFirst {
+      case Seq(a, b) if a == b => (a, b)
+    }
+}
+val pair = findConsecutiveIdentical(myCos)
+println(s"First consecutive identical pair: $pair")
